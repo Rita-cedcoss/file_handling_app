@@ -48,7 +48,11 @@ const DataAnalysis = () => {
     let dublicateremove=csvArr.slice(0,100);
     console.log(dublicateremove);
    },[csvArr]);
-
+//    Create a component that will display all the customer id's in a drop down and generate bill for a specific user
+// Display all the distinct items(description) in a drop down
+// Display the total quantity and no of times that item is ordered
+// On selecting a country list all the items and their quantity ordered. 
+    
     // console.log(csvArr.slice(0,100));
   return (
     <>
