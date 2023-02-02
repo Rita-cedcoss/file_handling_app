@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import DataAnalysis from './FileHandling/DataAnalysis';
+
 
 function App() {
   return (

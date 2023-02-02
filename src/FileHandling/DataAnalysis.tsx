@@ -24,7 +24,6 @@ const DataAnalysis = () => {
   //   for fill dropdown
   const processCSV = (str: any) => {
     const headers = str.slice(0, str.indexOf("\r")).split(",");
-    console.log(headers);
     const rows = str.slice(str.indexOf("\n") + 1).split("\n");
     const newArray = rows.map((item: any) => {
       const values = item.split(",");
@@ -36,25 +35,27 @@ const DataAnalysis = () => {
     });
     setCsvarr(newArray);
   };
+  let arr1: any = [];
   useEffect(() => {
     fetch("./online_retail.csv")
       .then((res) => res.text())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         processCSV(data);
         setLoading(false);
       });
-    let arr1: any = [];
+ 
     let discript: any = [];
     let contArr: any = [];
     let customerData = csvArr.slice(0, 3000);
     let Discription = csvArr.slice(0, 3000);
     let country: any = csvArr.slice(0, 3000);
-    // customer id data unique
     customerData.map((item) => {
-      if (!arr1.includes(item.CustomerID)) {
-        arr1.push(item.CustomerID);
-      }
+      if(parseInt(item.CustomerID).toString().match(/^[0-9]\d{4}$/)){  
+      if (!arr1.includes(parseInt(item.CustomerID))) {
+        arr1.push(parseInt(item.CustomerID));
+      }      
+    }
     });
     // description data unique
     Discription.map((item) => {

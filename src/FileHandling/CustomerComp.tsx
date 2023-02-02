@@ -1,5 +1,5 @@
 import { type } from "@testing-library/user-event/dist/type";
-import React, { SyntheticEvent, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 type propsData = {
   Country: string;
   CustomerID: string;
@@ -16,12 +16,17 @@ type custCompProps = {
 };
 const CustomerComp = (props: custCompProps) => {
   const [invoiceArr, setInvoicearr] = useState<propsData[]>([]);
+  useEffect(()=>{
+    console.log(props.csvArr);
+  },[]) 
   let arr: any = [];
   // invoice generation
   const invoice = (e: any) => {
     let value = e.target.value;
+    console.log(props.csvArr);
     props.csvArr.slice(0, 3000).map((item) => {
-      if (item.CustomerID === value && item.CustomerID !== "") {
+      console.log();
+      if (item.CustomerID.slice(0,item.CustomerID.indexOf("."))=== value && item.CustomerID.slice(0,item.CustomerID.indexOf("."))!== "") {
         arr.push(item);
       }
     });

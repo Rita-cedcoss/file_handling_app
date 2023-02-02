@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 type propsData = {
   Country: string;
   CustomerID: string;
@@ -33,7 +33,7 @@ const DiscriptComp = (props: discriptProps) => {
     setDiscarr(arr);
     setTotal(total);
   };
-  console.log(totalQuant);
+  // console.log(totalQuant);
 
   return (
     <div>
@@ -86,4 +86,4 @@ const DiscriptComp = (props: discriptProps) => {
   );
 };
 
-export default DiscriptComp;
+export default memo( DiscriptComp);
